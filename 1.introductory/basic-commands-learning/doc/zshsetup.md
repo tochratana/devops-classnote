@@ -1,7 +1,7 @@
 ## Setup OMZ
 1. git
 2. zsh
-# 1. Install the zsh
+## 1. Install the zsh
 sudo install zsh -y
 
 ```bash
