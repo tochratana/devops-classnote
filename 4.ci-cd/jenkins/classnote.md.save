@@ -63,4 +63,53 @@ From the UI you:
 
 
 
+## Jenkins Usage
+1. Introduction to Jenkins
+2. Installation and Setup
+3. Jenkins Architecture
+4. Core Concepts
+5. Creating Jobs : 
+- undstand about Jenkins Jobs: Jenkins have different type of jobs, that we need.
+* Working with projects
+  - enkins uses projects (also known as "jobs") to perform its work. Projects are defined and run by Jenkins users. Jenkins offers severa
+
+
+
+
+
+
+
+
+
+
+
+
+- workspace : the place that agents(master) work.
+```bash
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
