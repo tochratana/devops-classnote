@@ -58,10 +58,39 @@ docker run -it --name tmpfs-mount-demo --mount type=tmpfs,dst=/cache \
 docker run -it --name tmpfs-volume-demo --volume /cache \
  alpine sh
 ```
+## 
+relative part (Ex: ../../..file)
+absolute part (Ex: home/user/)
+```bash
+
+```
+
+
+## Leb 1:
+```bash
+
+git clone https://gitlab.com/devops-trainings3/special-trainning/sample-projects/simple-fileupload-gradle.git spring-file-upload
+
+
+docker build -t  spring-file-upload -f dev.Dockerfile .
+docker run -dp 8082:8080 --name file-upload-cont spring-file-upload
 
 
 
+docker volume create spring-files
+docker run -dp 8082:8080 \
+  -v spring-files:/app/filestorage/image \
+  -- name file-upload-cont spring-file-upload
 
 
+# bind mount
+docker run -dp 8082:8080 \
+  --mount type=bind,source
 
-## 3. 
+
+docker network create demo-network -d bridge
+docker run -it --rm --name container1 \
+--network demo-network
+busybox:latest
+
+```
