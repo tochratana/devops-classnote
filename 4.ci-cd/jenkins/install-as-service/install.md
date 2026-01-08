@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 
 # Exit on any error
@@ -50,3 +51,4 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 echo "Jenkins installation completed!"
 echo "You can access Jenkins at: http://localhost:8080"
 echo "Use the admin password shown above for initial setup"
+```

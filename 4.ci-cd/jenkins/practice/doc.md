@@ -6,3 +6,6 @@
 1. Freestyle Project
 ```bash
 ```
+
+1. Jenkins Pipeline : 
+   - 
