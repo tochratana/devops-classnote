@@ -1,0 +1,46 @@
+- name: Install Common Service Playbook
+  hosts: dev
+  become: yes
+
+  tasks:
+    - name: Update APT cache
+      apt:
+        update_cache: yes
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Install Docker Compose
+      apt:
+        name: docker-compose
+        state: present
+
+    - name: Install fish shell
+      apt:
+        name: fish
+        state: present
+
+    - name: Install Neofetch
+      apt:
+        name: neofetch
+        state: present
+
+    # 🔑 THIS TASK WAS MISSING
+    - name: Ensure docker group exists
+      group:
+        name: docker
+        state: present
+
+    - name: Add user into docker group
+      user:
+        name: tochratana
+        groups: docker
+        append: true
+# abcdefg!@#$1234
