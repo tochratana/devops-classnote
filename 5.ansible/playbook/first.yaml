@@ -1,5 +1,5 @@
 - name: Install Common Service Playbook
-  hosts: dev
+  hosts: all
   become: yes
 
   tasks:
@@ -32,7 +32,6 @@
         name: neofetch
         state: present
 
-    # 🔑 THIS TASK WAS MISSING
     - name: Ensure docker group exists
       group:
         name: docker

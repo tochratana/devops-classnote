@@ -89,9 +89,8 @@ Start write playbook
 
 
 ### NFS ( Network File System )
-Distribute file storage
+Distribute file storage: is a computer server that we use to shares file and directory over a network
 (if we have 5 machines on the same network, data will be store in those five machine)
 - NFS Server
 - NFS Client
-> NFS Storage class, Longhorn (By Rancher)
-> Samba
+> NFS Storage class, Longhorn (By Rancher), Samba

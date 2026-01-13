@@ -1,0 +1,14 @@
+---
+- name: setup NFS server
+  hosts: localhost
+  become: true
+  tasks:
+    - name: update apt caches
+      apt:
+        update_cache: true
+    - name: install NFS Server
+      apt:
+        state: present
+    - name: Create Direcotory to Used
+      apt:
+        
