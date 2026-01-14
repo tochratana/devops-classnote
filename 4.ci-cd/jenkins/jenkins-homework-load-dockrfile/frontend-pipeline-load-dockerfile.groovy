@@ -1,4 +1,5 @@
 @Library("telegrame_notification_share_library@main") _
+
 pipeline {
     agent any
 
@@ -9,8 +10,6 @@ pipeline {
     environment {
         CHAT_ID    = "1177908131"
         CHAT_TOKEN = "7873147150:AAGVJ-bpejW4O0XS9FhLQmwEr5Wk-VK89-Y"
-
-        SONAR_SCANNER = tool 'sonarqube-scanner'
 
         IMAGE_NAME = "nexina/prodstack-frontend"
         CONTAINER_NAME = "frontend"
@@ -36,16 +35,31 @@ pipeline {
 
         stage('SonarQube Scan') {
             steps {
-                withSonarQubeEnv(
-                    credentialsId: 'SONARQUBE-TOKEN',
-                    installationName: 'sonarqube-scanner'
-                ) {
-                    sh """
-                        ${SONAR_SCANNER}/bin/sonar-scanner \
-                        -Dsonar.projectKey=prodstack-frontend \
-                        -Dsonar.sources=src \
-                        -Dsonar.exclusions=node_modules/**,build/**
-                    """
+                script {
+                    checkCodeQualitySonarqube(
+                        'ProdStack Frontend',
+                        'prodstack-frontend',
+                        "${env.BUILD_NUMBER}"
+                    )
+                }
+            }
+        }
+
+        stage("Check Quality Gate"){
+            steps{
+                script{
+                    timeout(time: 2, unit: 'MINUTES'){
+                    def qg = waitForQualityGate()
+                    if ( qg.status != 'OK'){
+                        sh """
+                        echo " No need to build since you QG is failed "
+                        """
+                        currentBuild.result='FAILURE'
+                        return
+                    }else {
+                         currentBuild.result='SUCCESS'
+                    }
+                  }
                 }
             }
         }
@@ -75,9 +89,9 @@ pipeline {
         stage('Run Frontend Container') {
             steps {
                 sh '''
-                    docker rm -f frontend || true
+                    docker rm -f ${CONTAINER_NAME} || true
 
-                    docker run -d --name frontend \
+                    docker run -d --name ${CONTAINER_NAME} \
                       --network prod-net \
                       -p ${FRONTEND_PORT}:3000 \
                       ${IMAGE_NAME}:latest
