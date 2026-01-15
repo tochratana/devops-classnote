@@ -8,8 +8,8 @@ pipeline {
     }
 
     environment {
-        CHAT_ID    = "1177908131"
-        CHAT_TOKEN = "7873147150:AAGVJ-bpejW4O0XS9FhLQmwEr5Wk-VK89-Y"
+        CHAT_ID    = 
+        CHAT_TOKEN = 
 
         IMAGE_NAME = "nexina/prodstack-frontend"
         CONTAINER_NAME = "frontend"
