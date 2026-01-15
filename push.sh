@@ -26,4 +26,3 @@ git commit -m "$FULL_MESSAGE"
 git push $REMOTE $BRANCH
 
 echo "✅ Done!"
-git remote add origin https://github.com/tochratana/next-homework.git
