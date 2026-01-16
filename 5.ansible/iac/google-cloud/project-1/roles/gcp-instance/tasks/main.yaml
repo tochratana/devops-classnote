@@ -1,0 +1,29 @@
+- name: Create Google Cloud VM instance
+  google.cloud.gcp_compute_instance:
+    name: "{{ machine_name }}"
+    machine_type: "{{ machine_type }}"
+    zone: "{{ zone }}"
+    project: "{{ google_project_id }}"
+    auth_kind: serviceaccount
+    service_account_file: "{{ service_account_path }}"
+    state: present
+
+    disks:
+      - auto_delete: true
+        boot: true
+        initialize_params:
+          source_image: "{{ image }}"
+          disk_size_gb: "{{ disk_size_gb }}"
+
+    network_interfaces:
+      - network:
+          selfLink: "projects/{{ google_project_id }}/global/networks/{{ network }}"
+        access_configs:
+          - name: External NAT
+            type: ONE_TO_ONE_NAT
+
+    metadata:
+      startup-script: |
+        #!/bin/bash
+        apt update
+        apt install -y fish
