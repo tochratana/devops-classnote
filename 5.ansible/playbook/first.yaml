@@ -1,7 +1,6 @@
 - name: Install Common Service Playbook
   hosts: all
   become: yes
-
   tasks:
     - name: Update APT cache
       apt:

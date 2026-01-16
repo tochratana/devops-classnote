@@ -1,0 +1,6 @@
+# Ignore secret files
+google-service-account.json
+
+# Ignore OS or editor files
+.DS_Store
+.vscode/
