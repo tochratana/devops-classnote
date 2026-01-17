@@ -1,0 +1,9 @@
+- name: Create Google Cloud Instance using Ansible
+  hosts: localhost
+  # gather_facts: no
+
+  vars_files:
+    - vars/gcp.yml
+
+  roles:
+    - gcp-instance

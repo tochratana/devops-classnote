@@ -58,4 +58,4 @@
       copy:
         content: "{{ gcp_instance }}"
         dest: "./gcp_instance.json"
-      when: true 
+      when: true
