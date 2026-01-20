@@ -1,2 +1,3 @@
 - import_playbook: nfs-server.yaml
 - import_playbook: nfs-client.yaml
+- import_playbook: nfs-spring-upload.yaml

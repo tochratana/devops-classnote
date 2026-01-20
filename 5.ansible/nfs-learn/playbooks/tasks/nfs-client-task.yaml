@@ -1,32 +1,22 @@
-- name: update cache
+- name: Update apt cache
   apt:
     update_cache: yes
 
-- name: install nfs clients
+- name: Install NFS client
   apt:
     name: nfs-common
     state: present
 
-- name: create local mount point
+- name: Create mount directory
   file:
     path: "{{ nfs_clients.mount_path }}"
-    owner: nobody
-    group: nogroup
     state: directory
-    mode: '0777'
+    mode: "0777"
 
-- name: Mount to server
+- name: Mount NFS share
   mount:
     src: "{{ nfs_server.ip }}:{{ nfs_server.mount_path }}"
     path: "{{ nfs_clients.mount_path }}"
     fstype: nfs
     opts: defaults,_netdev
     state: mounted
-
-- name: Persist the mount
-  mount:
-    src: "{{ nfs_server.ip }}:{{ nfs_server.mount_path }}"
-    path: "{{ nfs_clients.mount_path }}"
-    fstype: nfs
-    opts: defaults,_netdev
-    state: present
