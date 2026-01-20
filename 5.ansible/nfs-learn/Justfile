@@ -1,0 +1,6 @@
+ping-all:
+  echo "ping"
+  ansible -i inventory.ini all -m ping
+
+nfs-server:
+  ansible-playbook -i inventory.ini playbooks/nfs-server.yaml
