@@ -1,2 +1,2 @@
 - import_playbook: nfs-server.yaml
-- import_playbook: nfs_client.yaml
+- import_playbook: nfs-client.yaml
