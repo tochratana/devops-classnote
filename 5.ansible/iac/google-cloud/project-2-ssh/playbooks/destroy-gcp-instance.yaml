@@ -35,7 +35,7 @@
               selfLink: "projects/{{google_project_id}}/global/networks/default"
             access_configs:
               - name: External NAT
-                type: ONE_TO_ONE_NAT
+                --type: ONE_TO_ONE_NAT
         tags:
           items:
             - http-server
