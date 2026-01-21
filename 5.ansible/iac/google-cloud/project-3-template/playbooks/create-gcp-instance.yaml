@@ -3,7 +3,7 @@
   hosts: localhost
   become: true
   vars:
-    machine_name: gcp-instance-ansible
+    machine_name: master2
     google_project_id: ratana-project-482311
     service_account_path: ../google-service-account.json
     ssh_public_key_part: /home/vagrant/.ssh/id_rsa.pub
@@ -35,7 +35,7 @@
         service_account_file: "{{ service_account_path }}"
         state: present
         metadata:
-          ssh-keys: "vagrant:{{ ssh_pub_key['content'] | b64decode }}"
+          ssh-keys: "tochratana:{{ ssh_pub_key['content'] | b64decode }}"
           startup-script: |
             #!/bin/bash 
             sudo apt update 
@@ -59,12 +59,13 @@
             - https-server
       register: gcp_instance
       when: true 
-    - name: Write gcp_instance into json file # When it create successful, write json file
-    - name: Generate inventory
-      template: 
-        src: ../templates/gcp-inventory-template.j2
-        dest: 
+    - name: Write gcp_instance into json file
       copy:
         content: "{{ gcp_instance }}"
         dest: "./gcp_instance.json"
       when: true
+    - name: Generate inventory
+      template: 
+        src: ../templates/gcp-inventory-template.j2
+        dest: ../inventory/hosts.ini
+      
