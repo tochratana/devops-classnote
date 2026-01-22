@@ -18,3 +18,4 @@ create-workers:
     ansible-playbook playbooks/create-workers-instance.yaml
 destroy: 
     ansible-playbook playbooks/destroy.yaml
+
