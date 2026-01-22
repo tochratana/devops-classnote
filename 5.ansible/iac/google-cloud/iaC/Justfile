@@ -10,11 +10,11 @@ iac:
     ansible-playbook playbooks/create-workers-instance.yaml
 # just create-masters
 create-masters: 
-    echo " 🫱 Create all the masters ....  " 
+    echo "Create all the masters ....  " 
     ansible-playbook playbooks/create-masters-instance.yaml
 # just create-workers
 create-workers: 
-    echo " ➡️ Create all the workers ..... " 
+    echo "Create all the workers ..... " 
     ansible-playbook playbooks/create-workers-instance.yaml
 destroy: 
     ansible-playbook playbooks/destroy.yaml
