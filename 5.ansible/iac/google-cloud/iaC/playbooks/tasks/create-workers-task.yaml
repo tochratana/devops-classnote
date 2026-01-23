@@ -49,11 +49,11 @@
   when: item.name not in ["master02", "master03"]
 - name: Register the existing inventory file 
   slurp:
-    src: "../inventory.ini"
+    src: "../inventory/inventory.ini"
   register: existing_inventory 
 - name: Update our inventory 
   template: 
     src: "../templates/workers-inventory.j2"
-    dest: "../inventory.ini"
+    dest: "../inventory/inventory.ini"
   vars:
     existing_content: "{{ existing_inventory['content'] | b64decode }}"
