@@ -1,4 +1,7 @@
 ## Noted for Ansible : 
+
+
+Run this command for install Ansible in Linux
 ```bash
 sudo apt update
 sudo apt install software-properties-common

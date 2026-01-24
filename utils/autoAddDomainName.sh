@@ -15,7 +15,7 @@ fi
 
 
 # if the config file already exists , no need to writer another file 
-
+# check if the domain name is already exist in the nginx conf files
 NGINX_CONF_DIR="/etc/nginx/conf.d"
 
 if grep -rq "server_name.*${domain_name}.tochratana.com" "$NGINX_CONF_DIR"; then
