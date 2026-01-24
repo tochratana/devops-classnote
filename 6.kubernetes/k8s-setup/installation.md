@@ -28,5 +28,13 @@ Change the addons for include these in the cluster setup
 - ingress_nginx_enabled: true
 - cert_manager_enabled: true
 - argocd_enabled: true
+- change name of cluster `kubespray/inventory/sample/group_vars/k8s_cluster/k8s-cluster.yml` and then search `cluster_name`
 
+> after change this we can run command to start cluster
+```bash
+cd kubespray
+ansible-playbook -b -v -i inventory/sample/inventory.ini cluster.yml
 
+# ping command for kubespray to know machines or not
+ansible -i inventory/sample/inventory.ini all -m ping
+```
