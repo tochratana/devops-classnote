@@ -2,8 +2,8 @@
   "results": [
     {
       "kind": "compute#instance",
-      "id": "3846285526099290910",
-      "creationTimestamp": "2026-01-22T08:53:05.914-08:00",
+      "id": "3545381414421612791",
+      "creationTimestamp": "2026-01-22T20:16:24.788-08:00",
       "name": "master02",
       "tags": {
         "items": [
@@ -20,18 +20,18 @@
           "kind": "compute#networkInterface",
           "network": "https://www.googleapis.com/compute/v1/projects/ratana-project-482311/global/networks/default",
           "subnetwork": "https://www.googleapis.com/compute/v1/projects/ratana-project-482311/regions/asia-southeast1/subnetworks/default",
-          "networkIP": "10.148.0.8",
+          "networkIP": "10.148.0.10",
           "name": "nic0",
           "accessConfigs": [
             {
               "kind": "compute#accessConfig",
               "type": "ONE_TO_ONE_NAT",
               "name": "External NAT",
-              "natIP": "34.87.166.203",
+              "natIP": "35.198.233.181",
               "networkTier": "PREMIUM"
             }
           ],
-          "fingerprint": "mrANSBaqKgM=",
+          "fingerprint": "9o0_P91fDG4=",
           "stackType": "IPV4_ONLY"
         }
       ],
@@ -110,8 +110,8 @@
       "shieldedInstanceIntegrityPolicy": {
         "updateAutoLearnPolicy": true
       },
-      "fingerprint": "OGptcw30Eo0=",
-      "lastStartTimestamp": "2026-01-22T08:53:20.274-08:00",
+      "fingerprint": "ZCtKWv1VAzY=",
+      "lastStartTimestamp": "2026-01-22T20:16:34.726-08:00",
       "satisfiesPzi": true,
       "resourceStatus": {
         "effectiveInstanceMetadata": {
@@ -211,8 +211,8 @@
     },
     {
       "kind": "compute#instance",
-      "id": "8179344736723658988",
-      "creationTimestamp": "2026-01-22T08:53:23.942-08:00",
+      "id": "2917764157059057865",
+      "creationTimestamp": "2026-01-22T20:16:38.284-08:00",
       "name": "master03",
       "tags": {
         "items": [
@@ -229,18 +229,18 @@
           "kind": "compute#networkInterface",
           "network": "https://www.googleapis.com/compute/v1/projects/ratana-project-482311/global/networks/default",
           "subnetwork": "https://www.googleapis.com/compute/v1/projects/ratana-project-482311/regions/asia-southeast1/subnetworks/default",
-          "networkIP": "10.148.0.9",
+          "networkIP": "10.148.0.11",
           "name": "nic0",
           "accessConfigs": [
             {
               "kind": "compute#accessConfig",
               "type": "ONE_TO_ONE_NAT",
               "name": "External NAT",
-              "natIP": "35.198.233.181",
+              "natIP": "34.87.123.120",
               "networkTier": "PREMIUM"
             }
           ],
-          "fingerprint": "_OAQdXWYmZk=",
+          "fingerprint": "rKvaYbeeatU=",
           "stackType": "IPV4_ONLY"
         }
       ],
@@ -319,8 +319,8 @@
       "shieldedInstanceIntegrityPolicy": {
         "updateAutoLearnPolicy": true
       },
-      "fingerprint": "EM24hvJJ9V0=",
-      "lastStartTimestamp": "2026-01-22T08:53:42.141-08:00",
+      "fingerprint": "NVigYdxx0YI=",
+      "lastStartTimestamp": "2026-01-22T20:16:47.448-08:00",
       "satisfiesPzi": true,
       "resourceStatus": {
         "effectiveInstanceMetadata": {
