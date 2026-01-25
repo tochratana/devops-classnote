@@ -13,7 +13,7 @@
    5. kubelet
    6. kube-proxy
 
-## Kubeadm (official Installer) => menual and simple
-## Kubespray (Production-grade automation)
+#### Kubeadm (official Installer) => menual and simple
+#### Kubespray (Production-grade automation)
 
 ---

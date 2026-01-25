@@ -1,5 +1,5 @@
 ## Noted : 
-## 1. Run the playbook to create 4, 5 machines
+### 1. Run the playbook to create 4, 5 machines
 clone git repo
 ```bash
 git clone https://github.com/kubernetes-sigs/kubespray.git
@@ -15,11 +15,11 @@ pip install -r requirements.txt
 ```
 
 after clone code
-# edit the inventory file for our infrastructures
+##### edit the inventory file for our infrastructures
 `kubespray/inventory/sample/inventory.ini`
 
 
-## 2. Define what we neet to installed inside our clusters
+### 2. Define what we neet to installed inside our clusters
 `kubespray/inventory/sample/group_vars/k8s_cluster/addons.yml`
 Change the addons for include these in the cluster setup
 - dashboard_enabled: true

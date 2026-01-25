@@ -28,13 +28,8 @@ Notes related to **web servers and deployment**.
 
 Nexus is used as an **artifact repository** for binaries, Docker images, and build outputs.
 
-### Installation
-
-* Docker Compose file: `./3.nexusossrepository/nexus/docker-compose.yaml`
-
-```bash
-docker compose up -d
-```
+- [Installation](./3.nexusossrepository/nexus/docker-compose.yaml) Run command  `docker compose up -d`
+- [document](./3.nexusossrepository/nexus/)
 
 **Notes**
 
@@ -46,8 +41,6 @@ docker compose up -d
 ## 4. CI/CD Pipeline
 
 **Continuous Integration & Continuous Deployment** concepts.
-
-
 ### Jenkins
 
 
@@ -55,6 +48,10 @@ docker compose up -d
 * Freestyle vs Pipeline jobs
 * Jenkinsfile basics
 * GitHub integration
+* [Jenkins Document](./4.ci-cd/jenkins/classnote.md)
+* [Install Jenkins as Service](./4.ci-cd/jenkins/install-as-service/install.sh)
+* [Jenkins Usage](4.ci-cd/jenkins/jenkins-usage/doc.md)
+* [Sonarqube](./4.ci-cd/jenkins/sonarqube/next-pipeline.groovy)
 
 
 ## 5. Ansible
@@ -94,9 +91,10 @@ Ansible is used for **configuration management** and **Infrastructure as Code**.
 
 Kubernetes is used for **container orchestration**.
 
-* [Setup]()
+* [Setup](./6.kubernetes/k8s-setup/installation.md)
+* [Guideline](./6.kubernetes/k8s-setup/doc.md)
 
-## 7. Cheat Sheets
+<!-- ## 7. Cheat Sheets
 
 ### Docker
 
@@ -185,7 +183,7 @@ kubectl get all
 * Quick revision before exams
 * Portfolio for DevOps learning
 
+--- -->
 ---
-
 **Author**: Toch Ratana
 ISTAD Student | DevOps & Cloud Learner
