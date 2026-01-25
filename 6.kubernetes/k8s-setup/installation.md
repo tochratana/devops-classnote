@@ -38,3 +38,19 @@ ansible-playbook -b -v -i inventory/sample/inventory.ini cluster.yml
 # ping command for kubespray to know machines or not
 ansible -i inventory/sample/inventory.ini all -m ping
 ```
+
+> After successfull installation
+
+this command if we use localhost machine for run, should be ssh to vm for run it
+```bash
+sudo kubectl get node
+sudo kubectl get node -o wide
+sudo kubectl get pod -A
+```
+> Run kubectl command without sudo
+
+```bash
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
