@@ -93,6 +93,8 @@ Kubernetes is used for **container orchestration**.
 
 * [Setup](./6.kubernetes/k8s-setup/installation.md)
 * [Guideline](./6.kubernetes/k8s-setup/doc.md)
+* [Pod](./6.kubernetes/k8s-basic/k8s-pod/)
+* [Replicaset](6.kubernetes/k8s-basic/k8s-replicaset/)
 
 <!-- ## 7. Cheat Sheets
 

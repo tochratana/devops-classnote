@@ -15,9 +15,8 @@ kubectl get svc -n kube-system
 # edit dashboard change type: ClusterIp -> NodePort
 kubectl edit service/kubernetes-dashboard -n kube-system
 
-after run this we will get dashbaord but it require login
 ```
-
+after run this we will get dashbaord but it require login
 #### after get dashboard so we can't login, so start from generate token for login
 ```bash
 # create namespace for kubernates
