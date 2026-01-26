@@ -12,4 +12,9 @@ kubectl get replicaset
 
 # watch command for see realtime
 watch kubectl get pod
+
+# if we delete pod it will be auto create 
+
+# delete replicaset for don't auto create 
+kubectl delete -f nginx-replicaset.yaml
 ```
