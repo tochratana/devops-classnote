@@ -1,0 +1,7 @@
+---
+- name: Install common services 
+  include_tasks: install-common-services.yaml 
+- name: Install neofetch 
+  include_tasks: install-neofetch.yaml 
+- name: Install and configure nginx 
+  include_tasks: install-configure-nginx.yaml 

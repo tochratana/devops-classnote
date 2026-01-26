@@ -1,0 +1,3 @@
+- name: install neofetch 
+  debug: 
+    msg: "Installing neofetch!! "
