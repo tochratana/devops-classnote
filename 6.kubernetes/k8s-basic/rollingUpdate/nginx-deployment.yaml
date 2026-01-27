@@ -6,7 +6,7 @@ spec:
   replicas: 4 
   # if not defined , meand rollingUpdate 
   strategy: 
-    type: Recreate
+    type: Recreate # this deployment using recreate
   selector:
     matchLabels:
       app: nginx-dpl

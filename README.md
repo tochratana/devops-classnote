@@ -5,24 +5,20 @@ This repository contains my **DevOps class notes**, including concepts, commands
 ## 1. Introduction
 **Core DevOps concepts** and overview.
 
-**Topics**
-
-* What is DevOps
-* DevOps lifecycle
-* CI vs CD
-* Infrastructure as Code (IaC)
-* Automation & monitoring basics
-
+* [Cut command](./1.introductory/basic-commands-learning/cut-commands/cut-doc.md)
+* [user permission](1.introductory/basic-commands-learning/doc/permission-related.md)
+* [SellScript](1.introductory/basic-commands-learning/doc/shellscript.md)
+* [User relate in linux](./1.introductory/basic-commands-learning/doc/user-related.md)
+* [Setup ZSH](./1.introductory/basic-commands-learning/doc/zshsetup.md)
+* [User Management](./1.introductory/user-management/)
 ## 2. Web Server
 
 Notes related to **web servers and deployment**.
 
-**Topics**
-
-* What is a web server
-* Nginx / Apache basics
-* Reverse proxy
-* Ports & firewall basics
+* [Docker](2.workingwithwebservers/docker/)
+* [Docker Compose](2.workingwithwebservers/docker-compose/)
+* [Docker Volume](./2.workingwithwebservers/volume/)
+* [Docker Network](./2.workingwithwebservers/docker-network/)
 
 ## 3. Nexus Repository
 
@@ -30,13 +26,6 @@ Nexus is used as an **artifact repository** for binaries, Docker images, and bui
 
 - [Installation](./3.nexusossrepository/nexus/docker-compose.yaml) Run command  `docker compose up -d`
 - [document](./3.nexusossrepository/nexus/)
-
-**Notes**
-
-* Default port: `8081`
-* Used in CI/CD pipelines
-* Supports Maven, Docker, npm, etc.
-
 
 ## 4. CI/CD Pipeline
 
