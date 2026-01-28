@@ -28,4 +28,9 @@ kubectl apply -f k8s-svcacc-clusterrolebinding.yaml
 
 # to create the token from the user 
 kubectl -n kubernetes-dashboard create token admin-user --duration=24h
+
+
+kubectl get clusterrole
+
+kubectl get clusterrolebinding
 ```

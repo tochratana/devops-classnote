@@ -81,6 +81,7 @@ Ansible is used for **configuration management** and **Infrastructure as Code**.
 Kubernetes is used for **container orchestration**.
 
 * [Setup](./6.kubernetes/k8s-setup/installation.md)
+* [Sample Deployment](./6.kubernetes/k8s-basic/k8s-deployment-access-outside/simplestore-deployment.yaml)
 * [Guideline](./6.kubernetes/k8s-setup/doc.md)
 * [K8s-dashboard](6.kubernetes/k8s-basic/k8s-dashboard/)
 * [K8s-basic](./6.kubernetes/k8s-basic/)
