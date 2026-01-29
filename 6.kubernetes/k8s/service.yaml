@@ -1,0 +1,14 @@
+# Kubernetes Service is used to expose the Deployment
+# and allow clients or other services to access the application
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: simplestore-service
+spec:
+  type: ClusterIP
+  selector:
+    app: simplestore-app
+  ports:
+    - port: 3000
+      # targetPort: 3000
