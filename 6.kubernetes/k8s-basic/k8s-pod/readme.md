@@ -1,4 +1,23 @@
 Multiple container in one pod
+
+
+```bash
+kubectl logs -f pod/pod-name
+
+# Imparetive 
+
+```
+
+- Replicaset : control how many idtical pod as renning
+
+
+
+
+
+
+
+
+
 ```bash
 
 # see detail about pod
@@ -21,8 +40,6 @@ kubectl exec -it multi-container-pod -c nginx-container -- /bin/bash
 kubectl exec -it multi-container-pod -c busybox-container -- sh
 
 ```
-
-
 
 
 1. Basic Pod Commands

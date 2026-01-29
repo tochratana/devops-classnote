@@ -27,3 +27,21 @@ osi model
 application model layer
 cluster
 longhon
+
+
+
+---
+
+Manage kubernetes object : 
+1. Imperative -> like adhoc
+2. Declarative -> playbook
+
+
+in pod have container, normaly one container have one pod.
+```bash
+kubectl apply -f file.yaml
+kubectl delete -f file.yaml
+```
+
+
+
