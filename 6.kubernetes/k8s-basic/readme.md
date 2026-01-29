@@ -6,3 +6,8 @@
 # For run apply pod
 kubectl apply -f nginx-pod.yaml
 ```
+
+
+---
+
+- `service` and `pod` connection deplen on label : If the Service selector does not match the pod labels, traffic goes nowhere.
