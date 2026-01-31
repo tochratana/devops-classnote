@@ -17,7 +17,7 @@ kubectl edit service/kubernetes-dashboard -n kube-system
 
 ```
 after run this we will get dashbaord but it require login
-#### after get dashboard so we can't login, so start from generate token for login
+#### after get dashboard so we can't login, so start from generate token for loginls
 ```bash
 # create namespace for kubernates
 # we create namespace for manage any resource
