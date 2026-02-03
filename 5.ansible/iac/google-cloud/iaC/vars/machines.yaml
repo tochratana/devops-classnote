@@ -1,5 +1,5 @@
 service_account_path: "../credential/google-service-account.json"
-google_project_id: "ratana-project-482311"
+google_project_id: "devmentor-445804"
 ssh_pubkey_path: "/home/vagrant/.ssh/id_rsa.pub"
 agent_user: "tochratana"
 

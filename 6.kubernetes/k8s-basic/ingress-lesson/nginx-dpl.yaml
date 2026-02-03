@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment-test
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 2 # You can scale this up or down
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.25.3 # Using a stable, specific image tag
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service-test
+spec:
+  selector:
+    app: nginx
+  type: LoadBalancer # Use LoadBalancer for cloud/local clusters that support it, or NodePort if not
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+
+--- 
+

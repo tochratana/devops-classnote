@@ -33,10 +33,13 @@ Change the addons for include these in the cluster setup
 > after change this we can run command to start cluster
 ```bash
 cd kubespray
-ansible-playbook -b -v -i inventory/sample/inventory.ini cluster.yml
 
 # ping command for kubespray to know machines or not
 ansible -i inventory/sample/inventory.ini all -m ping
+
+ansible-playbook -b -v -i inventory/sample/inventory.ini cluster.yml
+
+
 ```
 
 > After successfull installation
