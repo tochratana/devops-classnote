@@ -1,23 +1,18 @@
-# Blue deployment (Current version )
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: demo-blue-app
-  labels: 
-    app: demo-app
-    replicas: blue 
 spec:
   replicas: 4
   selector:
     matchLabels:
       app: demo-app
-      replicas: blue 
+      version: blue
   template:
     metadata:
       labels:
         app: demo-app
-        replicas: blue 
+        version: blue
     spec:
       containers:
       - name: demo-app

@@ -4,8 +4,8 @@ metadata:
   name: demo-svc
 spec:
   selector:
-    app: demo-app 
-    replicas: green
+    app: demo-app
+    version: blue
   ports:
   - port: 80
     targetPort: 80
