@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simplestore-dpl
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: simplestore-app
+  template:
+    metadata:
+      labels:
+        app: simplestore-app
+    spec:
+      containers:
+      - name: simplestore-app
+        image: tochratana/simplestore
+        resources:
+          requests: 
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000

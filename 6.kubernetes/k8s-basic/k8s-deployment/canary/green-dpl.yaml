@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-green-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-app
+      version: green
+  template:
+    metadata:
+      labels:
+        app: demo-app
+        version: green
+    spec:
+      containers:
+      - name: demo-app
+        image: tochratana/simplestore
+        ports:
+        - containerPort: 80
