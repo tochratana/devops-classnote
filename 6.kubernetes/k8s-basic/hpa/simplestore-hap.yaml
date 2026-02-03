@@ -7,12 +7,13 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: simplestore-dpl
-  minReplicas: 4
-  maxReplicas: 10
+  minReplicas: 4 # ចំនួន pod ដែលតូចបំផុតសម្រាប់ run 
+  maxReplicas: 10 # ចំនួន pod ដែលធំបំផុត​ដែលត្រូវ scale 
   metrics:
   - type: Resource
     resource:
       name: cpu
       target:
         type: Utilization
-        averageUtilization: 1
+        averageUtilization: 1 # តម្លៃនៃ condition ដែលត្រូវកំណត់ថា ពេលណាទើបត្រូវ scale 
+        # 1 = cpu run លើសពី 1% វានឹង scale 
