@@ -89,7 +89,15 @@ Kubernetes is used for **container orchestration**.
   * [Replicaset](6.kubernetes/k8s-basic/k8s-replicaset/)
   * [deployment](./6.kubernetes/k8s-basic/k8s-dashboard/)
   * [Rolling Update](6.kubernetes/k8s-basic/rollingUpdate/)
+  * [Deployment Strategies](./6.kubernetes/k8s-basic/k8s-deployment/readme.md)
+  * [HPA](6.kubernetes/k8s-basic/hpa/)
 
+---
+
+## 7. Configuration for testing
+
+1. [vagrant]()
+2. [k3s + vagrant]()
 <!-- ## 7. Cheat Sheets
 
 ### Docker

@@ -1,6 +1,0 @@
-# - name: Update apt caches 
-#   apt: 
-#     update_cache: true 
-- name: install common services 
-  debug: 
-    msg: "Install common services !! "

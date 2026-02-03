@@ -1,7 +1,0 @@
----
-- name: nfs client
-  hosts: nfs-clients
-  become: true
-  tasks: 
-    - name: running
-      include_tasks: tasks/nfs-client-task.yaml

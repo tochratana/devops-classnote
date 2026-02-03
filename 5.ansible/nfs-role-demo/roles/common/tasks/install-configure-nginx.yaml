@@ -1,3 +1,0 @@
-- name: Install and configure nginx 
-  debug: 
-    msg: "Install and configure nginx service!"

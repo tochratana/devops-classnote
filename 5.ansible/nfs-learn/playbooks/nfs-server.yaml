@@ -1,7 +1,0 @@
----
-- name: nfs server
-  hosts: nfs-servers
-  become: true
-  tasks: 
-    - name: running
-      include_tasks: tasks/nfs-server-task.yaml
