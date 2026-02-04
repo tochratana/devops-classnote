@@ -10,10 +10,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts: 
-      - dashboard-kubernetes.tochratana.com
+      - kubernetes-dashboard.tochratana.com
       secretName: dashboard-kubernetes-tls
   rules:
-  - host: dashboard-kubernetes.tochratana.com
+  - host: kubernetes-dashboard.tochratana.com
     http:
       paths:
       - pathType: Prefix
