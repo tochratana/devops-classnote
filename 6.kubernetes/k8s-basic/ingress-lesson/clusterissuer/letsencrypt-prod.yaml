@@ -1,19 +1,14 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
 metadata:
-  name: nginx-dpl
+  name: letsencrypt-prod
 spec:
-  selector:
-    matchLabels:
-      app: nginx-app
-  template:
-    metadata:
-      labels:
-        app: nginx-app
-    spec:
-      containers:
-      - name: nginx-app
-        image: nginx:alpine 
-        # HPA -> you will need to define the resources
-        ports:
-        - containerPort: 80
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: it.tochratana@gmail.com
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+    - http01:
+        ingress:
+          class: nginx

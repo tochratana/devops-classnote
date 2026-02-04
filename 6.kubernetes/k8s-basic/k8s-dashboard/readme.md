@@ -2,7 +2,7 @@
 
 ```bash
 kubectl get node
-kubectl get node - o wide
+kubectl get node -o wide
 kubectl get pod
 kubectl get pod -A
 
@@ -11,6 +11,9 @@ kubectl get all -A
 
 # To access dashbord, we use nodeport
 kubectl get svc -n kube-system
+
+# To see all resource in kube-system
+kubectl get all -n kube-system
 
 # edit dashboard change type: ClusterIp -> NodePort
 kubectl edit service/kubernetes-dashboard -n kube-system
@@ -29,8 +32,31 @@ kubectl apply -f k8s-svcacc-clusterrolebinding.yaml
 # to create the token from the user 
 kubectl -n kubernetes-dashboard create token admin-user --duration=24h
 
+# For access dashbaord : 
+https://34.87.70.98:30767  # with https 
+
 
 kubectl get clusterrole
 
 kubectl get clusterrolebinding
 ```
+
+#### Put domain to kubernetes dashbaord 
+```bash
+
+# check all service in namespace kube-system
+kubectl get svc -n kube-system
+
+# make sure kubernetes-dashboard using ClusterIP not NodePort
+kubectl edit svc kubernetes-dashboard -n kube-system
+
+# For search in vim we can use /type
+/type
+# test DNS -> IP 
+nslookup kubernetes-dashboard.tochratana.com
+
+```
+
+### IMPORTANT
+* If you removed the taint (untaint) for all the masters you can use master IP for the dns record
+* If not, use IP of workers instead
