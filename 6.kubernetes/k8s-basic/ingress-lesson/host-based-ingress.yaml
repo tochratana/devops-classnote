@@ -11,11 +11,11 @@ spec:
   ingressClassName: "nginx"
   tls: 
     - hosts: 
-      - k8s-nginx-demo.tochratana.com
-     # - reactjs-k8s.anajak-khmer.site
+      - k8s-nginx-demo-prod.tochratana.com
+      - simplestore-app.tochratana.com
       secretName: nginx-k8s-tls
   rules:
-  - host: k8s-nginx-demo.tochratana.com
+  - host: k8s-nginx-demo-prod.tochratana.com
     http:
       paths:
       - pathType: Prefix
@@ -23,5 +23,15 @@ spec:
         backend:
           service:
             name: nginx-svc
+            port: 
+              number: 80
+  - host: simplestore-app.tochratana.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: simplestore-svc
             port: 
               number: 80
