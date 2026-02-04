@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simplestore-dpl
+spec:
+  selector:
+    matchLabels:
+      app: simplestore-app
+  template:
+    metadata:
+      labels:
+        app: simplestore-app
+    spec:
+      containers:
+      - name: simplestore-app
+        image: tochratana/simplestore:latest
+        ports:
+        - containerPort: 80
