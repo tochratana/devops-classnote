@@ -12,9 +12,9 @@ List all content that I have noted and learn on it and for see all content list 
 5. [CI/CD Pipeline and We will force on Jenkins]()
 6. [Ansible Playbook]()
 7. [Kubernetes]()
-8. [zsh]()
-9. [Keyword]()
-10. [Util]()
+8. [Setting up with zsh]()
+9. [Search about Keyword in DevOps class]()
+10. [Some of configuration for automate]()
 
 ---
 **Author**: Toch Ratana [@tochratana](https://tochratana.com/)
