@@ -1,0 +1,7 @@
+---
+- name: nfs spring
+  hosts: nfs-servers
+  become: true
+  tasks: 
+    - name: running
+      include_tasks: tasks/deploy-spring-task.yaml

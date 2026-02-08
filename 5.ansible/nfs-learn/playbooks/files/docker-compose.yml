@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  spring-upload:
+    image: 69966/springgradleimg:1.1.1
+    container_name: spring-upload
+    ports:
+      - "8080:8080"
+    volumes:
+      - /srv/nfs_shared:/app/src/main/resources/images # TODO this part is shared after spring uplaod file 
+    restart: always
