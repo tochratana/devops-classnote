@@ -52,3 +52,7 @@ echo "Jenkins installation completed!"
 echo "You can access Jenkins at: http://localhost:8080"
 echo "Use the admin password shown above for initial setup"
 ```
+
+
+
+### We can uninstall jenkins service also for run 

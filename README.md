@@ -32,7 +32,8 @@ Nexus is used as an **artifact repository** for binaries, Docker images, and bui
 **Continuous Integration & Continuous Deployment** concepts.
 ### Jenkins
 
-
+* [Nginx Config](./4.ci-cd/jenkins/nginx-conf/)
+* [Jenkins Pipeline](./4.ci-cd/jenkins/pipes/readme.md)
 * Jenkins installation
 * Freestyle vs Pipeline jobs
 * Jenkinsfile basics
@@ -40,6 +41,7 @@ Nexus is used as an **artifact repository** for binaries, Docker images, and bui
 * [Jenkins Document](./4.ci-cd/jenkins/classnote.md)
 * [Install Jenkins as Service](./4.ci-cd/jenkins/install-as-service/install.sh)
 * [Jenkins Usage](4.ci-cd/jenkins/jenkins-usage/doc.md)
+* [Install SOnarqube](./4.ci-cd/jenkins/)
 * [Sonarqube](./4.ci-cd/jenkins/sonarqube/next-pipeline.groovy)
 
 
