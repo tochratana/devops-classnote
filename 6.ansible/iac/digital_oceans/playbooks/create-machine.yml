@@ -1,0 +1,69 @@
+# Usage: This is the playbook to create machines in Digital Ocean
+---
+- name: Create one Instance of Digital Ocean Droplet  
+  hosts: localhost
+  vars_files: 
+    - ../machines.yml
+  tasks: 
+    - name: "Check if SSH keys exist "
+      stat: 
+        path : "~/.ssh/id_rsa"
+      register: ssh_key
+    - name: "Create SSH keys when it does not exist "
+      command: ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa -N ""
+      when: not ssh_key.stat.exists
+    - name: "Loading the public key"
+      command: cat ~/.ssh/id_rsa.pub
+      register: master_public_key
+    - name: Show the public key
+      debug: 
+        msg: "{{ master_public_key.stdout }}"
+    - name: "Create Droplet"
+      community.digitalocean.digital_ocean_droplet:
+        state: present
+        name: "{{ item.name }}"
+        api_token: "{{ auth_token }}"    # Note: changed oauth_token to api_token
+        size: "{{ item.size }}"
+        region: "{{ item.region }}"
+        image: "{{ item.image }}"
+        wait_timeout: 500
+        user_data: |
+          #cloud-config
+          users:
+            - name: james
+              shell: /bin/bash
+              ssh_authorized_keys:
+                - "{{ master_public_key.stdout }}"
+      loop: "{{ machines }}"
+      register: droplets
+    # - name: "Create Droplet"
+    #   # community.digitalocean.digital_ocean:
+    #   digital_ocean_droplet: 
+    #     state: present
+    #     name: "{{item.name}}"
+    #     oauth_token: "{{auth_token}}"    
+    #     # api_token: "{{auth_token}}" 
+    #     size: "{{ item.size }}"
+    #     region: "{{ item.region }}"
+    #     image: "{{ item.image }}"
+    #     wait_timeout: 500
+    #     user_data: |
+    #       users: 
+    #         - name: james
+    #           shell: /bin/bash
+    #           ssh-authorized-keys:
+    #             - "{{ master_public_key.stdout }}"
+
+    #   loop: "{{ machines }}"
+    #   register: droplets
+    # - name: "Show Droplet Info"
+    #   debug: 
+    #     msg: "{{droplets}}"
+    - name: Write the droplets into json file 
+      copy: 
+        content: "{{ droplets }}"
+        dest: "droplets.json"
+
+# ansible-playbook -i inventory.ini playbooks/create-machine.yml 
+      
+      
