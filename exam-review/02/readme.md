@@ -20,9 +20,11 @@ Why use Nexus?
 Developer push code → Jenkins build → push artifact to Nexus → deploy from Nexus
 ```
 
+---
 
 ### 2. Jenkins Pipeline (VERY IMPORTANT)
 
+---
 
 ### 3. Kunernetes
 
@@ -58,3 +60,59 @@ What is Kubernetes ?
 
 * ពេល app ធំ មាន container ច្រើន (10, 100, 1000) → មិនអាចគ្រប់គ្រងដៃបាន ❌
 * ត្រូវការប្រព័ន្ធ Automation នេះហើយជា Orchestration
+
+
+
+> **Feature សំខាន់ៗ របស់ Kubernetes**
+
+`Scale – Heal – Balance – Update – Discover – Secure – Schedule`
+- Container Orchestration
+  - Kubernetes គ្រប់គ្រង container ច្រើនដោយស្វ័យប្រវត្តិ
+  - Deploy containers
+  - Manage lifecycle
+  - Run app across many nodes
+- Auto Scaling
+  - អាចបង្កើន / បន្ថយ Pods ដោយស្វ័យប្រវត្តិ
+  - Types:
+    - Manual scaling → kubectl scale
+    - Auto scaling (HPA) → based on CPU / Memory
+    - -> Traffic ច្រើន → Scale up
+    - -> Traffic តិច → Scale down
+- Self-Healing
+  - Kubernetes ជួសជុលខ្លួនឯង
+  - Container crash → Restart
+  - Pod fail → Recreate
+  - Node down → Move pod to another node
+  - -> App មិនងាយ down
+- Load Balancing
+  - ចែក traffic ទៅ Pods ច្រើន
+    - Prevent overload
+    - Improve performance
+    - High availability
+  - ប្រើ Service (ClusterIP / NodePort / LoadBalancer)
+- Rolling Updates & Recreate (`deployment strategies`)
+  - Update app មិន downtime
+- Service Discovery
+  - Pods និយាយគ្នាតាម DNS name
+    - No need IP hardcode
+    - Use Service name
+- Storage Orchestration (volume)
+  - Manage storage automatically
+    - Persistent Volume (PV)
+    - Persistent Volume Claim (PVC)
+    - Support NFS, Cloud storage, local disk
+- Configuration & Secret Management
+  - Store config separate from code
+    - ConfigMap → normal config
+    - Secret → password, token, API key
+- Automatic Scheduling
+  - Scheduler ជ្រើស node ដែលសមស្រប
+  - Based on:
+    - CPU / Memory
+    - Resource availability
+    - Constraints
+- High Availability (HA)
+  - App run បានទោះ node មួយ down
+    - Multiple replicas
+    - Failover support
+    - No single point of failure
