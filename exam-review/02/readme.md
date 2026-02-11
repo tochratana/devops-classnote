@@ -116,3 +116,202 @@ What is Kubernetes ?
     - Multiple replicas
     - Failover support
     - No single point of failure
+
+
+
+> **kubernetes Architecture**
+
+<!-- Kubernetes Cluster មាន 2 ផ្នែកធំៗ -->
+
+<!-- `Control Plane (Master Node)` -->
+<!-- - គ្រប់គ្រង Cluster ទាំងមូល
+- សម្រេចថា Pod រត់នៅណា និងរក្សា Desired State
+
+Components សំខាន់ៗ
+1. API Server
+  - ច្រកចូលសម្រាប់ Kubernetes
+  - ទទួល command ពី kubectl, CI/CD, UI
+  - Validate & process request
+
+👉 Brain Gateway
+
+2. Scheduler
+- ជ្រើស Worker Node សម្រាប់ Pod
+- Based on:
+  - CPU / Memory
+  - Resource availability
+  - Policy / Constraints
+
+👉 Decide "Pod run where?"
+
+3. Controller Manager
+- ត្រួតពិនិត្យ Desired state vs Current state
+- បើ pod បាត់ → recreate
+- បើ replicas មិនគ្រប់ → create more
+
+  Controllers:
+  - Deployment Controller
+  - ReplicaSet Controller
+  - Node Controller
+  - Job Controller
+
+👉 Maintain system stability
+
+4. etcd
+- Key-value database
+- រក្សាទុក cluster state ទាំងអស់
+- Pods, nodes, configs, secrets
+
+👉 Cluster database
+
+`Worker Nodes`
+
+រត់ Pods / Containers (Application)
+
+Components
+1. Kubelet
+- Agent នៅលើ node
+- ទទួល command ពី API Server
+- Ensure container running
+
+👉 Node manager
+
+2. Container Runtime
+- Run containers
+- Example:
+  - Docker
+  - containerd
+  - CRI-O
+
+3. Kube Proxy
+- Network & routing
+- Enable Pod communication
+- Load balancing
+
+4. Pods
+- Smallest unit in Kubernetes
+- Contain one or more containers
+- Share network + storage
+
+👉 Where app runs
+
+`How Kubernetes Works (Flow)`
+
+- You run:
+```bash
+kubectl apply -f deployment.yaml
+```
+
+- API Server receive request
+- etcd save desired state
+- Scheduler choose best node
+- Controller ensure pod created
+- Kubelet run container
+- Pod running -->
+
+![images](https://www.simplyblock.io/wp-content/media/a7fbb2_0290c594b9244137a8858165fa1c22f0mv2.png?ver=5b20f5f757759cd9d7352268a9fdb966a45cab3f)
+
+
+`Control Plane (ខួរក្បាល)`
+
+Control Plane = កន្លែងគ្រប់គ្រង Kubernetes ទាំងមូល
+វាជាអ្នក “បញ្ជា” និងកំណត់ថា Pod ត្រូវរត់នៅ Node ណា និងរក្សា state របស់ cluster។
+
+Components សំខាន់ៗ
+
+- Kube-apiserver -> ច្រកចូលសំខាន់ (API) ទទួល command ពី kubectl / CI/CD
+- Kube-scheduler -> ជ្រើស Node សម្រាប់ Pod រត់
+- Kube-controller-manager -> ត្រួតពិនិត្យ និងរក្សា desired state (បើ pod បាត់ → បង្កើតថ្មី)
+- etcd -> Database រក្សាទុកទិន្នន័យ cluster ទាំងអស់
+- Cloud-controller-manager -> ភ្ជាប់ Kubernetes ជាមួយ Cloud (AWS, Azure, GCP)
+
+**សរុប៖ Control Plane = អ្នកបញ្ជា និងគ្រប់គ្រង cluster**
+
+` Nodes (Worker Machines)`
+
+Nodes = ម៉ាស៊ីនដែលធ្វើការងារពិត (run application)
+ទទួល task ពី Control Plane ហើយរត់ Pods / Containers
+
+Components នៅលើ Node
+- Kubelet -> Agent ត្រួតពិនិត្យថា Containers ក្នុង Pod កំពុងរត់ត្រឹមត្រូវ
+- Container Runtime -> Software សម្រាប់រត់ Container (Docker / containerd)Kube-proxy -> Network proxy អនុញ្ញាតឲ្យ Pods និយាយគ្នា
+- Pods -> កន្លែងដែល Application រត់
+
+`Pod (Unit តូចបំផុត)`
+- Pod = ក្រុម container មួយ ឬច្រើន នៅលើ Node មួយ
+- Containers ក្នុង Pod:
+  - Share IP address
+  - Share hostname
+  - Share storage / resource
+
+**ចង់ scale service → បង្កើនចំនួន Pods**
+
+`Replication Controller`
+- គ្រប់គ្រងចំនួន Pod ឲ្យត្រឹមត្រូវ
+- បើ Pod បាត់ → បង្កើតថ្មី
+- ធានាថាមាន replica ត្រឹមត្រូវជានិច្ច
+
+`Service`
+- Service = Proxy network ដែលភ្ជាប់ client ទៅ Pod ត្រឹមត្រូវ
+- មិនចាំបាច់ដឹង IP Pod
+- បើ Pod ផ្លាស់ទី / ត្រូវប្តូរ → Service នៅដដែល
+- Load balance ទៅ Pods ច្រើន
+
+`Kubectl`
+- Command line tool សម្រាប់គ្រប់គ្រង Kubernetes
+- ឧទាហរណ៍:
+```bash
+kubectl get pods
+kubectl apply -f file.yaml
+kubectl delete pod <name>
+```
+ 
+<!-- Features / Capabilities
+1. Auto Scaling: Scale Pods ឡើង / ចុះ ដោយស្វ័យប្រវត្តិ (based on CPU, Memory)
+
+2. Lifecycle Management
+គ្រប់គ្រង deployment:
+- Rollback version ចាស់
+- Pause / Resume deployment
+- Update មិន downtime
+
+3. Declarative Model
+
+អ្នកសរសេរ Desired State (YAML)
+Kubernetes ធ្វើការនៅ background ដើម្បីរក្សា state នោះ
+
+4. Resilience & Self-Healing 🛠️
+
+Auto restart container
+
+Auto recreate pod
+
+Auto scaling
+
+Auto placement
+
+👉 App មិនងាយ down
+
+5. Persistent Storage 💾
+
+អាចភ្ជាប់ storage dynamically (PV / PVC)
+Data មិនបាត់ពេល container restart
+
+6. Load Balancing ⚖️
+
+ចែក traffic ទៅ Pods ច្រើន
+មាន internal និង external load balancing
+
+7. DevSecOps Support 🔐
+
+Kubernetes គាំទ្រ Security + Automation
+
+Examples:
+
+Secret Management → រក្សា password / token
+
+RBAC (Role-Based Access Control) → កំណត់ permission
+
+Network Policies → គ្រប់គ្រង network access
+
+👉 ជួយ deploy software មានសុវត្ថិភាព និងលឿន -->
