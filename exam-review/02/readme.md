@@ -55,6 +55,7 @@ What is Kubernetes ?
 - Container Runtime (Docker / containerd)
 - Pods
 
+
 - `Container Orchestration` provisioning, deployment, scaling, networking and load balancing. 
 > Container Orchestration = ការគ្រប់គ្រង Containers ច្រើនដោយស្វ័យប្រវត្តិ
 
@@ -315,3 +316,11 @@ RBAC (Role-Based Access Control) → កំណត់ permission
 Network Policies → គ្រប់គ្រង network access
 
 👉 ជួយ deploy software មានសុវត្ថិភាព និងលឿន -->
+
+
+Deployment Strategis : 
+- Recreate
+- RollingUpdate
+
+### 4. Ansible
+
