@@ -32,3 +32,12 @@ Instead of waiting for the internet to reach out to your server, a small piece o
     * **The Edge Encounter**: The request hits the Cloudflare Edge. This is where the heavy lifting happens (WAF filtering, DDoS protection, Bot management).
     * *The Tunnel Route*: Instead of Cloudflare trying to find your home IP address, it looks for the active "pipe" (cloudflared) that matches your Tunnel ID.
     * *Local Delivery*: Cloudflare pushes the request down through that established outbound pipe. cloudflared receives it locally and passes it to your web service (like a local port $8080$).The Response: Your app responds to cloudflared, which sends the data back up the pipe to the user.
+
+```mermaid
+flowchart LR
+  A[Start] --Some text--> B(Continue)
+  B --> C{Evaluate}
+  C -- One --> D[Option 1]
+  C -- Two --> E[Option 2]
+  C -- Three --> F[fa:fa-car Option 3]
+```
