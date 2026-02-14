@@ -15,3 +15,4 @@ Cloudflare is a platform  that provide :
 `Cloudflare sits between User ⇄ Your Server`
 
 
+1. CDN(Content Delivery Network)
