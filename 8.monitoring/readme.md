@@ -5,6 +5,8 @@ Continuous Monitoring
 - Accessing the monitoring dashboard for better insight
 - Adding alerts for the telegram alerts
 
+![alt text](image.png)
+![alt text](image-1.png)
 ---
 
 **Continuous Monitoring (ការត្រួតពិនិត្យជាប់ៗគ្នា)**
