@@ -145,3 +145,51 @@ Tools ដែលត្រូវបានគេប្រើប្រាស់ដ�
 
 
 #### Monitoring vs Logging vs Observability
+##### 1. Monitoring
+
+Monitoring គឺអ្វី?
+
+Monitoring = ការតាមដាន Metrics របស់ System ជាបន្តបន្ទាប់ ដើម្បីដឹងថា App ឬ Server “សុខសប្បាយទេ” ។
+
+វាមើលអ្វី?
+- CPU, Memory, Disk
+- Request per second
+- Error rate
+- Pod / Server status
+- Response time
+
+Tools ពេញនិយម
+- Prometheus → Collect Metrics
+- Grafana → Dashboard + Graph
+
+> Example Real Production
+
+Production: E-commerce Website (Kubernetes)
+
+Monitoring បង្ហាញថា៖
+- CPU = 92%
+- Response time = 3s (យឺត)
+- Error rate កើន
+
+DevOps ដឹងភ្លាម → Scale pods → Website normal វិញ
+
+Monitoring ប្រាប់ថា **“មានបញ្ហា”** ប៉ុន្តែមិនប្រាប់ថា **“បញ្ហាមកពីណា”**
+
+##### 2. Logging
+
+Logging គឺអ្វី?
+
+Logging = ការកត់ត្រាព្រឹត្តិការណ៍ (events) និង Error របស់ Application
+
+វាជា “History” របស់ System
+
+វាមើលអ្វី?
+- Error message
+- User request
+- Database query
+- Stack trace
+- Warning / Info
+
+Tools ពេញនិយម
+- ELK Stack
+- Loki
