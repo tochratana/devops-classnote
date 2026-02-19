@@ -1,7 +1,7 @@
 ## Note
 
 kind of service
-- headless service
+- headless service = 
 - NodePort service = expose service using pord of Node (30000-32676)
 - Cluster service = Can't acces outside, and use ingress(Configuration ingress for put domain name) for expose 
 - Load Balancer
