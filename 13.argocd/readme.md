@@ -73,6 +73,9 @@ Argo CD មាន 3 main components
 ---
 
 ### 3. Argo CD Webhooks
+
+Yes, Argo CD has built-in support for webhooks to automatically trigger application synchronization when changes are pushed to your Git repository
+
 ![alt text](image/image-2.png)
 Webhook = Event Notification ពី Git
 

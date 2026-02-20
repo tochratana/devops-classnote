@@ -1,5 +1,7 @@
 ## Kubernetes + Jenkins
 
+
+![alt text](image.png)
 Install and Setup
 1. Create namespaces
 ```bash
