@@ -36,3 +36,11 @@ The primary service types for exposing ports are:
 3. LoadBalancer: This is the standard way to expose public-facing applications in a cloud environment. It automatically provisions an external load balancer from your cloud provider (like AWS, Azure, GCP), which in turn routes traffic to the service on a stable external IP or DNS name. It acts as a superset of the NodePort service type.
 4. Ingress: While technically a different resource type, Ingress is commonly used with a ClusterIP service to provide more advanced HTTP/HTTPS routing, load balancing, and SSL termination based on hostnames or URL paths, often using a single external IP address or load balancer.
 5. ExternalName: A special type that maps a service to an external DNS name by returning a CNAME record. No proxying is involved; it's useful for accessing external services as if they were internal to the cluster. 
+
+---
+
+Type of Service for expose port : 
+1. NodePort : 30000 - 32767
+2. ClusterIP
+3. LoadBalancer
+4. ExternalName

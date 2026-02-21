@@ -10,14 +10,6 @@ kubectl logs -f pod/pod-name
 
 - Replicaset : control how many idtical pod as renning
 
-
-
-
-
-
-
-
-
 ```bash
 
 # see detail about pod
