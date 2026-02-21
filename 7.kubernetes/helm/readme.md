@@ -25,3 +25,16 @@ helm uninstall myapp
 # List releases:
 helm list
 ```
+
+
+
+- [working with helm repo](https://www.devopsschool.com/blog/openshift-how-to-add-helm-repository-in-openshift/)
+```bash
+# Add bitnmi repo from helm to kubernetes
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo update # update repo
+
+# install
+helm install <name-folder>
+helm install my-nginx bitnami/nginx
+```
