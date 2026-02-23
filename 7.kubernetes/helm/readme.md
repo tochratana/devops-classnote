@@ -1,5 +1,19 @@
 ## Note for learn helm
 
+
+ Helm -> package manager for kubernetes
+ fish -> sudo apt update, sudo apt install fish -y
+
+
+
+ tolerations : when you tain  the node, 
+
+ use for : 
+ - Deploy service
+ - for more complicated (Microservices)
+ - database cluster, monitoring tools
+ - multiple cluster
+ - 
 ```bash
 # Download helm script
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com
@@ -37,4 +51,28 @@ helm repo update # update repo
 # install
 helm install <name-folder>
 helm install my-nginx bitnami/nginx
+```
+
+
+
+```bash
+helm template nginx-chart
+helm install nginx-release nginx-chart
+
+helm upgrade nginx-release nginx-chart
+
+# if it doesn't exist, it will install the new release
+# if it's already exists, it will upgrade instead
+helm install nginx-release nginx-chart - - upgrade
+helm history nginx-release # to show the timestamp for the update and revision id
+
+helm rollback nginx-release
+helm rollback nginx-release 3
+
+# delete install 
+helm uninstall nginx-release
+
+# to package your chart
+helm package nginx-chart
+# we will get the zipped .tgz which later on can be pushed to your registery
 ```
