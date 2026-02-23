@@ -1,5 +1,7 @@
 ## Argo CD (GitOps Continuous Delivery)
 
+
+- https://gitlab.com/keoKAY/sample-argocd-02/-/tree/master/templates?ref_type=heads
 - How does Argo CD work?
 - Argo CD architecture (API Server, Repo Server, Application Controller)
 - Argo Webhooks
