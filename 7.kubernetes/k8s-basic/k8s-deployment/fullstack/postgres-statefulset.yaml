@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+# stateful vs stateless 
+# Kubernetes Operators 
+# Vault 
+kind: StatefulSet
+metadata:
+  name: postgresql-demo
+spec:
+  selector:
+    matchLabels:
+      app: postgresql-demo
+  serviceName: postgresql-demo-svc
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: postgresql-demo
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:15
+        ports:
+        - containerPort: 5432
+        env:
+          - name: PGDATA
+            value: /var/lib/postgresql/data/pgdata
+        envFrom:
+          - secretRef:
+              name: postgres-secret-demo
+        volumeMounts:
+          - mountPath: /var/lib/postgresql/data
+            name: postgres-storage-demo
+  volumeClaimTemplates:
+  - metadata:
+      name: postgres-storage-demo
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: nfs-client
+      resources:
+        requests:
+          storage: 5Gi
