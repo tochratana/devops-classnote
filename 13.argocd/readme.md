@@ -1,12 +1,15 @@
 ## Argo CD (GitOps Continuous Delivery)
 
-
+- ![](https://miro.medium.com/v2/resize:fit:1400/1*WoUDBtac_apVDnM7V73EXA.png)
 - https://gitlab.com/keoKAY/sample-argocd-02/-/tree/master/templates?ref_type=heads
 - How does Argo CD work?
 - Argo CD architecture (API Server, Repo Server, Application Controller)
 - Argo Webhooks
 - Why webhooks are used
 - Git → Argo CD sync flow
+
+
+we can use clusterissuer in defualt namespace for another namespace
 
 ---
 
