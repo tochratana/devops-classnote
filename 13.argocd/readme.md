@@ -8,6 +8,7 @@
 - Why webhooks are used
 - Git → Argo CD sync flow
 
+
 ---
 
 ### 1. How does Argo CD work? (ដំណើរការ)
