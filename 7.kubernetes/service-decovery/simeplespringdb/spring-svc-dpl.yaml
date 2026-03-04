@@ -1,0 +1,42 @@
+# 3. Your Backend Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prod-api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prod-api
+  template:
+    metadata:
+      labels:
+        app: prod-api
+    spec:
+      containers:
+      - name: backend-container
+        image: tochratana/simplespingdb:v1.0.1 # Your exact image!
+        env:
+        # Here is where we override localhost with the K8s Service name
+        - name: SPRING_DATASOURCE_URL
+          value: "jdbc:postgresql://postgres-service:5432/blog_db" 
+        
+        # (Optional) You can override these too, or let it use the ones in your image
+        - name: SPRING_DATASOURCE_USERNAME
+          value: "tochratana"
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: "1234"
+
+---
+# 4. Your Backend Service (So the frontend can find THIS backend)
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-api-service
+spec:
+  selector:
+    app: prod-api
+  ports:
+    - protocol: TCP
+      port: 8080      # The port other pods will call
+      targetPort: 8080 # The port your Spring Boot app runs on
