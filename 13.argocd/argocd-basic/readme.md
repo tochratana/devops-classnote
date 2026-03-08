@@ -13,7 +13,9 @@ kubectl edit secret argocd-secret -n argocd
 kubectl describe secret argocd-secret -n argocd
 
 echo -n "<screet-webhook>" | base64 # generate base64 and then
+
 data: 
+    # For github Secret we use this
     webhook.github.secret: <your-base64-value>
 ```
 

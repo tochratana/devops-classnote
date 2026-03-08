@@ -11,6 +11,12 @@
 
 ---
 
+- Delete as `forground` mean delete what depen on first 
+- `background` delete in the same time
+
+
+---
+
 ### 1. How does Argo CD work? (ដំណើរការ)
 
 Argo CD ប្រើ GitOps principle
