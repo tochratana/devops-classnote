@@ -578,8 +578,8 @@ alertmanager:
     - name: 'telegram-notification'
       telegram_configs:
         - send_resolved: true
-          bot_token: string
-          chat_id: number
+          bot_token: '8739224324:AAG0PRgLqJB2OHNcg20MQXC7H-czepG4Vtc'
+          chat_id: 1177908131
           parse_mode: "HTML"
           message: |-
                     {{ range .Alerts }}

@@ -10,11 +10,11 @@ spec:
   ingressClassName: "nginx"
   tls: 
     - hosts: 
-      - prometheus.devnerd.store
-      - grafana.devnerd.store
+      - prometheus.tochratana.com
+      - grafana.tochratana.com
       secretName: kube-stack-new-tls
   rules: 
-    - host: prometheus.devnerd.store
+    - host: prometheus.tochratana.com
       http:
         paths: 
           - pathType: Prefix 
@@ -24,7 +24,7 @@ spec:
                 name: monitor-stack-release-kube-prometheus
                 port: 
                   number: 9090
-    - host: grafana.devnerd.store
+    - host: grafana.tochratana.com
       http:
         paths: 
           - pathType: Prefix 

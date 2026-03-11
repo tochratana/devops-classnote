@@ -5,12 +5,12 @@
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 # how do we install this in the specific namespace 
-helm install monitor-stack-release \
+helm install monitor-stack-release --namespace monitoring\
     prometheus-community/kube-prometheus-stack
 
 
 # To esure that everything is running 
-kubectl --namespace default \
+kubectl --namespace monitoring \
     get pods \
     -l "release=monitor-stack-release"
 ```

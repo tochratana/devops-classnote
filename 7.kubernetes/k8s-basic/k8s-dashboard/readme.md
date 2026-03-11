@@ -30,7 +30,7 @@ kubectl create ns kubernetes-dashboard
 kubectl apply -f k8s-svcacc-clusterrolebinding.yaml
 
 # to create the token from the user 
-kubectl -n kubernetes-dashboard create token admin-user --duration=24h
+
 
 # For access dashbaord : 
 https://34.87.70.98:30767  # with https 
