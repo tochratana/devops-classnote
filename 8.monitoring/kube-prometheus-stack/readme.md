@@ -17,13 +17,17 @@ helm install monitor-stack-release prometheus-community/kube-prometheus-stack
 kubectl --namespace default \
     get pods \
     -l "release=monitor-stack-release"
+
+kubectl --namespace monitoring \
+    get pods \
+    -l "release=monitor-stack-release"
 ```
 
 ### Configure the domain name for the prometheus and grafana 
 
 ```bash
 # get password for login grafana if not work with prom-operator
-kubectl get secret monitor-stack-release-grafana \
+kubectl get secret monitor-stack-release-grafana --namespace monitoring \
   -o jsonpath="{.data.admin-password}" | base64 --decode
 ```
 
@@ -60,5 +64,5 @@ helm upgrade \
     monitor-stack-release \
     prometheus-community/kube-prometheus-stack \
     -f values.yaml \
-    -n default
+    -n monitoring
 ```
