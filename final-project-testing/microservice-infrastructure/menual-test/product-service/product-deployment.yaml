@@ -2,9 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: product-service
-  namespace: micro-demo
+  namespace: microservices
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: product-service
@@ -15,6 +15,9 @@ spec:
     spec:
       containers:
         - name: product-service
-          image: tochratana/spring-micro-product-service:v1.0.0
+          image: tochratana/product-service:latest
           ports:
-            - containerPort: 8383
+            - containerPort: 8080
+          env:
+            - name: DB_HOST
+              value: mongodb
