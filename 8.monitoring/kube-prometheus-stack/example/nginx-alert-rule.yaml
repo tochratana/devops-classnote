@@ -10,7 +10,7 @@ spec:
       rules: 
         - alert: NginxPodCountLow
           # PromptQL
-          expr: sum(kube_pod_status_ready{condition="true", namespace="default", pod=~"nginx-deployment-.*"}) < 3
+          expr: sum(kube_pod_status_ready{condition="true", namespace="default", pod=~"nginx-deployment-.j*"}) < 3
           for: 5s 
           labels: 
             severity: critical 
