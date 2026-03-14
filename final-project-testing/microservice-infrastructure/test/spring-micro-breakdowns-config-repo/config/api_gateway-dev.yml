@@ -1,0 +1,35 @@
+spring:
+    cloud:
+        gateway:
+          server:
+              webflux:
+                routes:
+                  - id: product-service
+                    uri: lb://product-service
+                    predicates:
+                      - Path=/api/v1/products/**
+                    filters:
+                      - StripPrefix=0
+        
+                  - id: user-service
+                    uri: lb://user-service
+                    predicates:
+                      #- Path=/api/v1/users/**
+                      # because I want to override the path
+                      - Path=/users/**
+                    filters:
+                      #- StripPrefix=0
+                      - RewritePath=/users/(?<segment>.*), /api/v1/users/$\{segment}
+    application:
+      name: api-gateway
+server:
+  port: 8282
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
