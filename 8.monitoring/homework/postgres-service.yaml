@@ -1,0 +1,13 @@
+# postgres-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-nodeport
+spec:
+  type: NodePort
+  selector:
+    app: postgres-test
+  ports:
+    - port: 5432
+      targetPort: 5432
+      nodePort: 30007
