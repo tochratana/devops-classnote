@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: user-service
-          image: tochratana/user-service:latest
+          image: tochratana/spring-micro-user-service:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 8181

@@ -15,9 +15,9 @@ spec:
     spec:
       containers:
         - name: product-service
-          image: tochratana/product-service:latest
+          image: tochratana/spring-micro-porduct-service:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 8383
           env:
             - name: DB_HOST
               value: mongodb

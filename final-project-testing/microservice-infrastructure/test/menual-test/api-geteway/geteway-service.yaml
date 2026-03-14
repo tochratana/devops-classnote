@@ -9,5 +9,5 @@ spec:
     app: api-gateway
   ports:
     - port: 80
-      targetPort: 8080
+      targetPort: 8282
       nodePort: 30080
