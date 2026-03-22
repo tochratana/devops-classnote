@@ -2,7 +2,7 @@
 - Deadline : 19-03-2026
 - Slide or Github readme with source repo code
 
-### Sorn Sophamarinet — UI Components & Design System
+### 1. Sorn Sophamarinet — UI Components & Design System
 Responsibility
 
 Build the base UI system for the whole platform.
@@ -41,7 +41,7 @@ Theme system (dark/light)
 ```
 
 
-### Va Eric - Graph & DevOps Visualization
+### 2. Va Eric - Graph & DevOps Visualization
 
 This is very important for your platform.
 
@@ -79,7 +79,7 @@ node-based architecture editor
 pipeline UI
 ```
 
-### Korm Tanigan — Animation & Interaction
+### 3. Korm Tanigan — Animation & Interaction
 
 Responsibility
 
@@ -114,7 +114,7 @@ UI transitions
 deployment status animation
 ```
 
-### Toch Ratana — Data, State Management & Utilities
+### 4. Toch Ratana — Data, State Management & Utilities
 
 Responsibility
 
