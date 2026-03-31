@@ -43,7 +43,7 @@ Example
 Used for: 
 - Logging agent (Fluentd )
 - Monitoring agents (Node exporter )
-- Security agents 
+- Security agents
 
 Run one pod per node 
 

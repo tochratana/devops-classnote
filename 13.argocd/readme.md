@@ -9,7 +9,15 @@
 - Git → Argo CD sync flow
 
 
+<<<<<<< HEAD
 we can use clusterissuer in defualt namespace for another namespace
+=======
+---
+
+- Delete as `forground` mean delete what depen on first 
+- `background` delete in the same time
+
+>>>>>>> db06b6f0612c11d2b0ac97945c771e75aaccb7fb
 
 ---
 

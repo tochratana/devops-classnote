@@ -1,0 +1,1 @@
+Service Discovery = How services find and talk to each other automatically.

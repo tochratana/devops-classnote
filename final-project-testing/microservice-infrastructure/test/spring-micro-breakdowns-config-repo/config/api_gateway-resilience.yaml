@@ -1,0 +1,188 @@
+spring:
+    cloud:
+        gateway:       
+          # httpclient: 
+          #   connect-timeout: 5000 # 5 seconds
+          #   response-timeout: 10s 
+          server:
+              webflux:
+                routes:
+                  - id: product-service
+                    uri: lb://product-service
+                    predicates:
+                      - Path=/api/v1/products/**
+                    filters:
+                      # - StripPrefix=0
+                      # update the circuit breakers config
+                      - name: CircuitBreaker
+                        args:
+                            name: product-service-cb
+                            fallbackUri: forward:/fallback/products
+                      - name: Retry
+                        args:
+                            retries: 2
+                            statuses: BAD_GATEWAY,GATEWAY_TIMEOUT
+                            methods: GET,POST,PUT
+                            backoff:
+                                first-backoff: 200ms
+                                max-backoff: 1s
+                                factor: 2
+                      # - name: TimeLimiter 
+                      #   args: 
+                      #     name: product-service 
+
+                      # - name: RequestRateLimiter
+                      #   args:
+                      #       rate-limiter: "#{@inMemoryRateLimiter}" # use in-memory rate limiter
+                      #       key-resolver: "#{@userKeyResolver}" # use user key resolver
+
+                            # you will need to configure redis in order for this to work 
+                            # redis-rate-limiter.replenish-rate: 15
+                            # redis-rate-limiter.burst-capacity: 30
+                      # - name: Timeout
+                      #   args:
+                      #       timeout: 10s
+                      - StripPrefix= 0
+                  - id: user-service
+                    uri: lb://user-service
+                    predicates:
+                      #- Path=/api/v1/users/**
+                      # because I want to override the path
+                      - Path=/users/**
+                    filters:
+                      # - name: CircuitBreaker
+                      #   args:
+                      #       name: user-service-cb
+                      #       fallback-uri: forward:/fallback/users
+                      # Retry filters
+                      # - name: Retry
+                      #   args:
+                      #       retries: 3
+                      #       statuses: BAD_GATEWAY,GATEWAY_TIMEOUT,SERVICE_UNAVAILABLE
+                      #       methods: GET,POST,PUT,DELETE
+                      #       backoff:
+                      #         first-backoff: 100ms
+                      #         max-backoff: 500ms
+                      #         factor: 2
+                      # Request Rate Limiter
+                      # - name: RequestRateLimiter
+                      #   args:
+                      #       redis-rate-limiter.replenish-rate: 10
+                      #       redis-rate-limiter.burst-capacity: 20
+                      #       redis-rate-limiter.requested-tokens: 1
+                      # - name: Timeout
+                      #   args:
+                      #       timeout: 5s
+                      #- StripPrefix=2 # remove /api/users from path
+                      #- StripPrefix=0
+                      - RewritePath=/users/(?<segment>.*), /api/v1/users/$\{segment}
+                # default-filters:
+                #   - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+                #   - name: GlobalFilter
+                #     args:
+                #       pre-logger-enabled: true
+                #       post-logger-enabled: true
+    application:
+      name: api-gateway
+server:
+  port: 8282
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-service:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+  # instance:
+  #   prefer-ip-address: true
+  #   instance-id: ${spring.application.name}:${server.port}
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      user-service-cb:
+          # Circuit breaker opens when 50% of request fails
+          failure-rate-threshold: 50
+          # Min number of calls before the circuit breaker can open
+          minimum-number-of-calls: 5
+          # time to wait before switching to half open state
+          wait-duration-in-open-state: 30s
+          sliding-window-size: 10
+          # type of sliding window (COUNT_BASE or TIME_BASE)
+          sliding-window-type: COUNT_BASED
+          # Exceptions that should be records as failure.
+          record-exceptions:
+            - java.net.ConnectException
+            - java.net.SocketTimeoutException
+            - org.springframework.web.client.ResourceAccessException
+          ignore-exceptions:
+            - java.security.InvalidParameterException
+          permitted-number-of-calls-in-half-open-state: 3
+      product-service-cb:
+        failure-rate-threshold: 60
+        minimum-number-of-calls: 3
+        wait-duration-in-open-state: 20s
+        permitted-number-of-calls-in-half-open-state:  2
+        sliding-window-type: count_based
+        sliding-window-size: 8
+  retry:
+    instances:
+      user-service-cb:
+          max-attempts: 3
+          wait-duration: 1s
+          exponential-backoff-multiplier: 2
+          exponential-max-wait-duration: 10s
+          retry-exceptions:
+            - java.net.ConnectException
+            - java.net.SocketTimeoutException
+          ignore-exceptions:
+            - java.security.InvalidParameterException
+      product-service-cb:
+          max-attempts: 2
+          wait-duration: 2s
+          exponential-backoff-multiplier: 1.5
+          exponential-max-wait-duration: 8s
+  # is a timeout patterns that ensures service calls don't hangout indefinitely. it acts as a safety net by canceling operations that take too long.
+  timelimiter:
+    instances:
+      user-service:
+        timeout-duration: 5s # max wait time
+        cancel-running-future: true # cancel the actual operations
+      product-service:
+        timeout-duration: 10s
+        cancel-running-future: true
+  bulkhead:
+    instances:
+      user-service-cb:
+        max-concurrent-calls: 10
+        max-wait-duration: 100ms
+      product-service-cb:
+        max-concurrent-calls: 15
+        max-wait-duration: 200ms
+# logging configuration
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.web.reactive: DEBUG
+    reactor.netty: DEBUG
+    io.github.resilience4j: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+
+# for the actuator endpoints 
+management: 
+  endpoints: 
+    web: 
+      exposure: 
+        include: health, info, metrics, circuitbreakers, retries, time-limiters, bulkheads 
+  endpoint:
+    health:
+      show-details: always
+      roles: [ADMIN, USER]
+    circuitbreakers:
+      enabled: true
+    retries:
+      enabled: true
+    time-limiters:
+      enabled: true
+    bulkheads:
+      enabled: true

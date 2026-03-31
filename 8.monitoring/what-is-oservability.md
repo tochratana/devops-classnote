@@ -1,0 +1,1 @@
+Observability (Observerbility) គឺជាគំនិតក្នុង DevOps / Distributed Systems ដែលអនុញ្ញាតឱ្យយើង មើលឃើញ និងយល់ថា system កំពុងដំណើរការយ៉ាងដូចម្តេចនៅខាងក្នុង តាមរយៈ data ដែល system ផ្តល់ចេញ។

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: user-service
+  kafka:
+    bootstrap-servers: kafka:9092
+    consumer:
+      group-id: my-group
+      auto-offset-reset: earliest
+server:
+  port: 8181
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-service:8761/eureka
