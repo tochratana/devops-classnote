@@ -1,7 +1,7 @@
 ## Node
 
 ### 1. Taints (Block Pods From Node)
--> Taints = Mark a Node t oreject Pods 
+-> Taints = Mark a Node to reject Pods
 
 If a node is tainted → Pods CANNOT run there (unless Pod has `toleration`).
 
